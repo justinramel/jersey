@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Strava Jersey</title>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="../../js/highcharts.js"></script>
+    <script type="text/javascript">
+      $(function () {
+          var miles;
+          var feet;
+
+          $(document).ready(function() {
+
+            miles = new Highcharts.Chart({
+              colors: ['Gold'],
+              chart: {
+              renderTo: 'miles',
+              animation: {
+                duration: 1500,
+                easing: 'easeOutBounce'
+              },
+              type: 'bar'
+              },
+              title: {
+              text: 'Tour Jersey'
+              },
+              subtitle: {
+                text: '<%= @period %>'
+              },
+              xAxis: {
+                categories: [<%= @riders_miles %>],
+                title: {
+                  text: 'Riders'
+                }
+              },
+              yAxis: {
+              min: 0,
+              title: {
+                text: 'Miles'
+              },
+              labels: {
+              overflow: 'justify'
+                      }
+              },
+              plotOptions: {
+              bar: {
+              dataLabels: {
+              enabled: true
+                          }
+                   }
+                           },
+              credits: {
+              enabled: false
+                       },
+              series: [{
+                animation: {
+                  duration: 2000
+                },
+                name: 'Miles',
+                data: [ <%= @miles %> ]
+              }],
+              legend: {
+                enabled: false
+              } 
+            }, function(chart) {
+              chart.renderer.image('../../img/yellow-jersey.png', 225, 0, 50, 56)
+                .add();   
+              });
+
+            feet = new Highcharts.Chart({
+              colors: ['Red'],
+              chart: {
+                renderTo: 'feet',
+                type: 'bar'
+              },
+              title: {
+                text: 'King of the Mountains Jersey'
+              },
+              subtitle: {
+                text: '<%= @period %>'
+              },
+              xAxis: {
+                categories: [<%= @riders_feet %>],
+                title: {
+                text: 'Riders'
+                }
+              },
+              yAxis: {
+              min: 0,
+              title: {
+                text: 'Feet Climbed'
+              },
+              labels: {
+              overflow: 'justify'
+                      }
+              },
+              plotOptions: {
+              bar: {
+              dataLabels: {
+              enabled: true
+                          }
+                   }
+                           },
+              credits: {
+              enabled: false
+                       },
+              series: [{
+                animation: {
+                  duration: 2000
+                },
+                name: 'Feet Climbed',
+                data: [ <%= @feet %> ]
+              }],
+              legend: {
+                enabled: false
+              } 
+            }, function(chart) {
+              chart.renderer.image('../../img/polkadot-jersey.png', 225, 0, 50, 56)
+                .add();   
+              });
+          });
+    });
+</script>
+  </head>
+  <body>
+
+    <div id="miles" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
+    <div id="feet" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
+
+  </body>
+</html>
