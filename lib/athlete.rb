@@ -1,3 +1,5 @@
+require 'chronic'
+
 module Jersey
   class Athlete
     attr_accessor :period, :name, :miles, :hours, :minutes, :feet
@@ -20,7 +22,7 @@ module Jersey
     private
 
     def last_monday
-      DateTime.parse("Monday").strftime("%b %d, %Y")
+      Chronic.parse('monday', :context => :past).strftime("%b %d, %Y")
     end
 
   end
