@@ -15,14 +15,14 @@ module Jersey
     end
 
     def miles
-        riders.map(&:miles)
+      url = 'http://app.strava.com/athletes/'
+      riders.map { |r| "{y: #{r.miles}, url: '#{url}#{r.id}'}" }.to_s.gsub('"', '')
     end
 
     def winner_by
       return '' if riders.count < 2
 
       Winner.new(riders[0], riders[1], 'miles').to_s
-      #by     = "%.2f" % (winner.miles - loser.miles)
     end
 
   end

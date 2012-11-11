@@ -10,6 +10,7 @@ module Jersey
       data     = parse(response.body)
 
       athlete = Athlete.new
+      athlete.id      = id
       athlete.period  = data[:period]
       athlete.name    = data[:name]
       athlete.miles   = data[:miles].to_f

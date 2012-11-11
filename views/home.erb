@@ -45,12 +45,22 @@
                       }
               },
               plotOptions: {
-              bar: {
-              dataLabels: {
-              enabled: true
-                          }
-                   }
-                           },
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function() {
+                                location.href = this.options.url;
+                            }
+                        }
+                    }
+                },
+                bar: {
+                  dataLabels: {
+                    enabled: true
+                  }
+                }
+              },
               credits: {
               enabled: false
                        },
@@ -97,12 +107,22 @@
                       }
               },
               plotOptions: {
-              bar: {
-              dataLabels: {
-              enabled: true
-                          }
-                   }
-                           },
+                series: {
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function() {
+                                location.href = this.options.url;
+                            }
+                        }
+                    }
+                },
+                bar: {
+                  dataLabels: {
+                    enabled: true
+                  }
+                }
+              },
               credits: {
               enabled: false
                        },

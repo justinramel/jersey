@@ -2,7 +2,7 @@ require 'chronic'
 
 module Jersey
   class Athlete
-    attr_accessor :period, :name, :miles, :hours, :minutes, :feet
+    attr_accessor :id, :period, :name, :miles, :hours, :minutes, :feet
 
     def validate!
       period_start = period.split(/ - /)[0]

@@ -15,7 +15,8 @@ module Jersey
     end
 
     def feet
-        riders.map(&:feet)
+      url = 'http://app.strava.com/athletes/'
+      riders.map { |r| "{y: #{r.feet}, url: '#{url}#{r.id}'}" }.to_s.gsub('"', '')
     end
 
     def winner_by
