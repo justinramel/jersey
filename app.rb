@@ -1,4 +1,5 @@
 require 'sinatra'
+
 require './lib/strava_gateway'
 
 get '/' do
