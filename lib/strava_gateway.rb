@@ -17,6 +17,7 @@ module Jersey
       athlete.minutes = data[:minutes]
       athlete.feet    = data[:feet]
       #athlete.validate!
+      athlete
     end
 
     def self.parse(body)
