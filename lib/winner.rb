@@ -34,6 +34,7 @@ module Jersey
         'demolishing',
         'soundly thrashing'
       ].sample
+      'a head of'
     end
 
     def by
