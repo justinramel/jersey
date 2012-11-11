@@ -69,7 +69,7 @@
                   duration: 2000
                 },
                 name: 'Miles',
-                data: <%= @yellow_jersey.miles %>
+                data: <%= @yellow_jersey.units %>
               }],
               legend: {
                 enabled: false
@@ -131,7 +131,7 @@
                   duration: 2000
                 },
                 name: 'Feet Climbed',
-                data: <%= @kom_jersey.feet %>
+                data: <%= @kom_jersey.units %>
               }],
               legend: {
                 enabled: false
@@ -142,15 +142,15 @@
               });
           });
     });
-</script>
+  </script>
   </head>
   <body>
 
     <div id="miles" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
-    <center><%= @yellow_jersey.winner_by %></center>
+    <center><%= @yellow_jersey.winner %></center>
     <br /><br />
     <div id="feet" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
-    <center><%= @kom_jersey.winner_by %></center>
+    <center><%= @kom_jersey.winner %></center>
 
   </body>
 </html>

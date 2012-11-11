@@ -1,8 +1,7 @@
 require 'sinatra'
 
 require './lib/strava_gateway'
-require './lib/yellow_jersey'
-require './lib/kom_jersey'
+require './lib/race'
 
 get '/' do
   redirect '/race?rider[]=1108047&rider[]=1193339&rider[]=605007'
@@ -12,8 +11,8 @@ get '/race' do
   @riders = riders_from_params
   @height = @riders.size * 100
 
-  @yellow_jersey = Jersey::YellowJersey.new(@riders)
-  @kom_jersey    = Jersey::KoMJersey.new(@riders)
+  @yellow_jersey = Jersey::Race.new(@riders, 'miles')
+  @kom_jersey    = Jersey::Race.new(@riders, 'feet')
 
   erb :home
 end
