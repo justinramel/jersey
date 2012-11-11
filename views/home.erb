@@ -27,10 +27,10 @@
               text: 'Tour Jersey'
               },
               subtitle: {
-                text: '<%= @period %>'
+                text: '<%= @yellow_jersey.period %>'
               },
               xAxis: {
-                categories: [<%= @riders_miles %>],
+                categories: <%= @yellow_jersey.names %>,
                 title: {
                   text: 'Riders'
                 }
@@ -59,7 +59,7 @@
                   duration: 2000
                 },
                 name: 'Miles',
-                data: [ <%= @miles %> ]
+                data: <%= @yellow_jersey.miles %>
               }],
               legend: {
                 enabled: false
@@ -79,10 +79,10 @@
                 text: 'King of the Mountains Jersey'
               },
               subtitle: {
-                text: '<%= @period %>'
+                text: '<%= @kom_jersey.period %>'
               },
               xAxis: {
-                categories: [<%= @riders_feet %>],
+                categories: <%= @kom_jersey.names %>,
                 title: {
                 text: 'Riders'
                 }
@@ -111,7 +111,7 @@
                   duration: 2000
                 },
                 name: 'Feet Climbed',
-                data: [ <%= @feet %> ]
+                data: <%= @kom_jersey.feet %>
               }],
               legend: {
                 enabled: false
@@ -127,7 +127,10 @@
   <body>
 
     <div id="miles" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
+    <center><%= @yellow_jersey.winner_by %></center>
+    <br /><br />
     <div id="feet" style="min-width: 400px; height: <%= @height %>px; width: 800px; margin: 0 auto"></div>
+    <center><%= @kom_jersey.winner_by %></center>
 
   </body>
 </html>

@@ -1,7 +1,12 @@
 source :rubygems
 
-gem 'sinatra'
+
 gem 'shotgun'
+gem 'pry'
+
+gem 'sinatra'
 gem 'thin'
+
 gem 'faraday'
 gem 'chronic'
+
