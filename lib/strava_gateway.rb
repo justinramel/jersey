@@ -16,7 +16,7 @@ module Jersey
       athlete.hours   = data[:hours]
       athlete.minutes = data[:minutes]
       athlete.feet    = data[:feet]
-      athlete.validate!
+      #athlete.validate!
     end
 
     def self.parse(body)
@@ -30,6 +30,5 @@ module Jersey
       h[:feet ]   = h[:feet].sub(',', '').to_i
       h
     end
-
   end
 end
