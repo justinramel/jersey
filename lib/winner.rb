@@ -40,7 +40,7 @@ module Jersey
     def by
       w = winner.send(field)
       l = loser.send(field)
-      "%.2f" % (w - l)
+      "%.1f" % (w - l)
     end
 
   end
