@@ -22,7 +22,11 @@ module Jersey
     private
 
     def last_monday
-      Chronic.parse('monday', :context => :past).strftime("%b %d, %Y")
+      if Date.today.monday?
+        Chronic.parse('today').strftime("%b %d, %Y")
+      else
+        Chronic.parse('monday', :context => :past).strftime("%b %d, %Y")
+      end
     end
 
   end
