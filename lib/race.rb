@@ -6,7 +6,7 @@ module Jersey
 
     def initialize(riders, unit)
       @riders = riders.sort_by! { |r| r.send(unit) }.reverse
-      @period = riders.first.period
+      @period = riders.sort_by(&:period).last.period
       @unit   = unit
     end
 
