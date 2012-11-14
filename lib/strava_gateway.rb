@@ -13,9 +13,9 @@ module Jersey
         request = Typhoeus::Request.new("http://www.strava.com/athletes/#{id}")
 
         request.on_complete do |response|
-          data     = parse(response.body)
-          athletes << create_athlete(id, data)
+          athletes << create_athlete(response.body)
         end
+
         hydra.queue(request)
       end
 
@@ -23,8 +23,14 @@ module Jersey
       athletes
     end
 
+    def self.create_athlete(body)
+      data = parse(body)
+      Athlete.new(data)
+    end
+
     def self.parse(body)
       h = {}
+      h[:id]      = body.slice(/<link href='http:\/\/www.strava.com\/athletes\/(.+?)' rel='canonical'>/, 1)
       h[:period]  = body.slice(/>Activities for (.+?)\n/,  1)
       h[:name]    = body.slice(/id='athlete-name'>(.+?)</, 1)
       h[:miles]   = body.slice(/>(.+?)<abbr class='unit' title='miles'>/, 1)
@@ -35,16 +41,5 @@ module Jersey
       h
     end
 
-    def self.create_athlete(id, data)
-      athlete = Athlete.new
-      athlete.id      = id
-      athlete.period  = data[:period]
-      athlete.name    = data[:name]
-      athlete.miles   = data[:miles].to_f
-      athlete.hours   = data[:hours]
-      athlete.minutes = data[:minutes]
-      athlete.feet    = data[:feet].to_f
-      athlete.validate!
-    end
   end
 end

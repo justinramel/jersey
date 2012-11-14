@@ -2,7 +2,25 @@ require 'chronic'
 
 module Jersey
   class Athlete
+
     attr_accessor :id, :period, :name, :miles, :hours, :minutes, :feet
+
+    def initialize(data)
+      @id      = data[:id]
+      @period  = data[:period]
+      @name    = data[:name]
+      @miles   = data[:miles].to_f
+      @hours   = data[:hours]
+      @minutes = data[:minutes]
+      @feet    = data[:feet].to_f
+      validate!
+    end
+
+    def to_s
+      "#{id}\t#{period}\t#{name}\t#{miles}mi\t#{hours}hr#{minutes}m\t#{feet}ft"
+    end
+
+    private
 
     def validate!
       period_start = period.split(/ - /)[0]
@@ -14,12 +32,6 @@ module Jersey
       end
       self
     end
-
-    def to_s
-      "#{period}\t#{name}\t#{miles}mi\t#{hours}hr#{minutes}m\t#{feet}ft"
-    end
-
-    private
 
     def last_monday
       if Date.today.monday?
