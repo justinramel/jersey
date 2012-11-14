@@ -21,7 +21,5 @@ def riders_from_params
   rider_ids = params[:rider]
   rider_ids = [1108047, 1193339, 605007] if !rider_ids
 
-  rider_ids.map do |id|
-    Jersey::StravaGateway.get_athlete(id)
-  end
+  Jersey::StravaGateway.get_athletes(rider_ids)
 end
