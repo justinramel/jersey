@@ -31,7 +31,7 @@ module Jersey
     def self.parse(body)
       h = {}
       h[:id]      = body.slice(/\/athletes\/(.+?)' rel='canonical'>/, 1)
-      h[:period]  = body.slice(/>Activities for (.+?)\n/,  1)
+      h[:period]  = body.slice(/>Activities for (.+?)\n/, 1)
       h[:name]    = body.slice(/id='athlete-name'>(.+?)</, 1)
       h[:miles]   = body.slice(/>(.+?)<abbr class='unit' title='miles'>/, 1)
       h[:hours]   = body.slice(/>(.+?)<abbr class='unit' title='hours'>/, 1)

@@ -1,4 +1,6 @@
 require 'sinatra'
-require 'app'
 
+require './app'
+
+use Rack::Deflater
 run Sinatra::Application
