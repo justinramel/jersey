@@ -24,8 +24,6 @@ module Jersey
 
     def validate!
       period_start = period.split(/ - /)[0]
-      puts "period start = #{period_start}"
-      puts "last_monday = #{last_monday}"
       if (period_start != last_monday)
         self.miles   = 0
         self.hours   = 0
@@ -36,8 +34,9 @@ module Jersey
     end
 
     def last_monday
-      if Date.today.monday?
-        Chronic.parse('today').strftime("%b %d, %Y")
+      today = Chronic.parse('today')
+      if today.monday?
+        today.strftime("%b %d, %Y")
       else
         Chronic.parse('last monday').strftime("%b %d, %Y")
       end
