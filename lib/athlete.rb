@@ -23,7 +23,10 @@ module Jersey
     private
 
     def validate!
+      return self unless period.include?(' - ')
       period_start = period.split(/ - /)[0]
+      p period
+      p period_start
       if (period_start != last_monday)
         self.miles   = 0
         self.hours   = 0
