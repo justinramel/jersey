@@ -4,7 +4,7 @@ require './lib/strava_gateway'
 require './lib/race'
 
 get '/' do
-  redirect '/race?rider[]=1108047&rider[]=1193339&rider[]=605007'
+  redirect '/race?rider[]=1108047&rider[]=1193339&rider[]=605007&rider[]=1759055'
 end
 
 get '/race' do
@@ -19,7 +19,7 @@ end
 
 def riders_from_params
   rider_ids = params[:rider]
-  rider_ids = [1108047, 1193339, 605007] if !rider_ids
+  rider_ids = [1108047, 1193339, 605007, 1759055] if !rider_ids
 
   Jersey::StravaGateway.get_athletes(rider_ids)
 end
